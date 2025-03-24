@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Mes projets</title>
+    <style> 
+    /* Réinitialisation des marges et paddings */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        background-color: white;
+        color: black;
+    }
+
+    /* Header */
+    header {
+        background-color: #000;   
+        padding: 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: padding 0.3s ease;
+        opacity: 0;
+        animation: fadeIn 1s forwards;
+    }
+
+    .nom {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: white;
+    }
+
+    .accent {
+        color: #00C4CC;
+        font-weight: bold;
+    }
+
+    nav ul {
+        list-style: none;
+        display: flex;
+        gap: 25px;
+        transition: transform 0.3s ease; /* Animation pour l'alignement des liens */
+    }
+
+    nav ul li {
+        display: inline;
+    }
+
+    nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-size: 1rem;
+        padding: 5px 10px;
+        position: relative;  /* Pour l'animation de l'underline */
+        transition: color 0.3s ease, transform 0.3s ease; /* Animation sur la couleur et la position */
+    }
+
+    /* Animation du texte au survol */
+    nav ul li a:hover {
+        color: #00C4CC;
+        transform: scale(1.1); /* Légère mise en valeur du lien */
+    }
+
+    /* Ajout d'un effet sous-ligné animé */
+    nav ul li a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: #00C4CC;
+        transition: width 0.3s ease;
+    }
+
+    nav ul li a:hover::after {
+        width: 100%; /* L'underline se déploie sur le survol */
+    }
+
+    /* Animation sur l'élément actif du menu */
+    nav ul li a.active {
+        color: blue !important;
+        font-weight: bold;
+        text-decoration: underline;
+    }
+
+    /* Animation au survol des projets */
+    .iframe-box {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        opacity: 0;
+        animation: fadeIn 1s forwards 0.5s; /* Animation d'apparition avec délai */
+    }
+
+    .iframe-box:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    /* SECTION PRINCIPALE */
+    .about-section {
+        background-color: #f8f9fa;
+        padding: 50px;
+    }
+
+    .about-section h2 {
+        color: #00C4CC;
+        font-size: 24px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 40px;
+        max-width: 900px;
+        margin: auto;
+    }
+
+    .text-section {
+        flex: 1;
+        text-align: left;
+        max-width: 500px;
+    }
+
+    .text-section .highlight {
+        color: #00C4CC;
+        font-weight: bold;
+    }
+
+    .image-container {
+        max-width: 220px;
+        height: 220px;
+        border-radius: 50%;
+        border: 3px solid #00C4CC;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Animation des boutons */
+    .iframe-box button {
+        margin-top: 10px;
+        padding: 8px 12px;
+        border: none;
+        background-color: #00C4CC;
+        color: white;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: transform 0.2s ease, background-color 0.3s ease;
+    }
+
+    .iframe-box button:hover {
+        background-color: darkblue;
+        transform: scale(1.1);
+    }
+
+    .iframe-box button:active {
+        transform: scale(0.95);
+    }
+
+    .about-section1 {
+        background-color:white; 
+        margin-top: 30px;
+        width: 100%;
+        text-align: center;
+        height: 590px;
+    }
+
+    .iframe-container {
+        display: flex;
+        justify-content: center;
+        gap: 50px;
+        flex-wrap: wrap;
+        margin-top: 180px;
+        margin-bottom: 10px;
+    }
+
+    .iframe-box {
+        background-color: #e4e0e095;  
+        width: 350px;
+        height: 200px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        color: black;
+        padding: 10px;
+    }
+
+    /* FOOTER */
+    footer {
+        background-color: #999292;
+        color: black;
+        padding: 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1rem;
+        border-top: 1px solid black;
+        margin-top: 50px;
+        opacity: 0;
+        animation: fadeIn 1s forwards 1s; /* Animation d'apparition avec délai */
+    }
+
+    .footer-container {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+        /* Ajustement du header */
+        header {
+            flex-direction: column;
+            text-align: center;
+            padding: 30px;
+        }
+
+        nav ul {
+            flex-direction: column;
+            gap: 10px;
+            margin-right: 0;
+            padding: 10px 0;
+        }
+
+        /* Effet lors du clic */
+        nav ul li a.active {
+            color: blue;
+        }
+
+        /* Ajustement de la section principale */
+        .content {
+            flex-direction: column-reverse;
+            text-align: center;
+        }
+
+        .text-section {
+            text-align: center;
+        }
+
+        .image-container {
+            width: 150px;
+            height: 150px;
+        }
+
+        /* Ajustement du footer */
+        footer {
+            flex-direction: column;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .footer-container {
+            flex-direction: column;
+            text-align: center;
+            gap: 10px;
+        }
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+    </style>
+</head>
+<body> 
+    <header>
+        <div class="nom">LARE <span class="accent">TIBENAME</span></div>
+        <nav>
+            <ul>
+                <li><a href="accueil.html" class="nav-link active">Accueil</a></li>
+                <li><a href="apropos.html" class="nav-link">À propos</a></li>
+                <li><a href="projets.html" class="nav-link">Projets</a></li>
+                <li><a href="experiences.html" class="nav-link">Compétences</a></li>
+                <li><a href="contacts.html" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="about-section1">
+            <h4>Mes projets</h4>
+            <div class="iframe-container">
+                <div class="iframe-box">
+                    <p>Un mini-jeu en JavaScript <br>qui utilise des évènements DOM.<br>
+                        <br>#html,#css,#js</p>
+                    <button onclick="window.open('lien_du_projet1', '_blank')">Voir</button>
+                </div>
+
+                <div class="iframe-box">
+                    <p>Un mini-jeu en JavaScript <br>qui utilise des évènements DOM.<br>
+                        <br>#html,#css,#js</p>
+                    <button onclick="window.open('lien_du_projet2', '_blank')">Voir</button>
+                </div>
+
+                <div class="iframe-box">
+                    <p>Un mini-jeu en JavaScript <br>qui utilise des évènements DOM.<br>
+                        <br>#html,#css,#js </p>
+                    <button onclick="window.open('lien_du_projet3', '_blank')">Voir</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <p>Designed by <span class="accent">Tibéname</span> with HTML, CSS, JS</p>
+            <p> Tous droits réservés - 2025</p>
+        </div>
+    </footer>
+
+    <script>
+        // Sélectionne tous les liens du menu
+        const navLinks = document.querySelectorAll('.nav-link');
+    
+        navLinks.forEach(link => {
+            link.addEventListener('click', function (event) {
+                event.preventDefault(); // Empêche la redirection immédiate
+    
+                // Supprime "active" de tous les liens
+                navLinks.forEach(l => l.classList.remove('active'));
+                navLinks.forEach(l => l.style.color = "white"); // Remet tous les textes en blanc
+    
+                // Ajoute "active" au lien cliqué et change sa couleur
+                this.classList.add('active');
+                this.style.color = "blue";
+    
+                // Redirige vers la page correspondante
+                window.location.href = this.getAttribute("href");
+            });
+        });
+    </script>
+</body>
+</html>

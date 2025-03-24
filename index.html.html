@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Ma page d'accueil</title>
+    <style>
+        /* Réinitialisation des marges et paddings */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: white;
+            color: black;
+        }
+    
+        /* Header */
+        header {
+            background-color: #000;   
+            padding: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    
+        .nom {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+        }
+        .accent {
+            color: #00C4CC; /* Bleu clair pour mettre en valeur le prénom */
+            font-weight: bold;
+        }
+    
+        /* Barre de navigation */
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            margin-right: 50px;
+        }
+    
+        nav ul li {
+            display: inline;
+        }
+    
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 5px 10px;
+            transition: color 0.3s ease, transform 0.3s ease; /* Animation de la couleur et de la taille */
+        }
+
+        /* Animation de transformation des liens du menu */
+        nav ul li a:hover {
+            transform: scale(1.1);  /* Agrandir légèrement le lien */
+            color: #00C4CC;  /* Changer la couleur au survol */
+        }
+    
+        /* Effet lors du clic */
+        /* nav ul li a.active {
+            color: blue;
+        } */
+    
+        /* Section principale */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 100px 50px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease, transform 1s ease; /* Animation d'apparition */
+        }
+
+        .hero.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    
+        .text-container {
+            max-width: 600px;
+            text-align: left;
+        }
+    
+        .text-container h1 {
+            font-size: 2rem;
+            color: black;
+            white-space: nowrap; /* Empêche le retour à la ligne */
+        }
+    
+        .btn {
+            display: block;
+            width: fit-content;
+            background-color: #00C4CC;
+            color: white;
+            padding: 20px 50px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 20px auto; /* Centre parfaitement */
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease, transform 1s ease; /* Animation du bouton */
+        }
+    
+        .btn:hover {
+            background-color: #0099A8;
+        }
+
+        /* Animation du bouton */
+        .btn.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    
+        .image-container img {
+            width: 400px;
+        }
+    
+        /* Footer */
+        footer {
+            background-color: #999292; /* Couleur de fond */
+            color: black; /* Texte noir */
+            padding: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1rem;
+            border-top: 1px solid black;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s ease, transform 1s ease; /* Animation du footer */
+        }
+
+        footer.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    
+        .footer-container {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+    
+        /* Responsive */
+        @media (max-width: 768px) {
+            /* Ajustement du header */
+            header {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px;
+            }
+    
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+                margin-right: 0;
+                padding: 10px 0;
+            }
+    
+            /* Ajustement de la section principale */
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 50px 20px;
+            }
+    
+            .text-container {
+                text-align: center;
+                max-width: 100%;
+            }
+    
+            .text-container h1 {
+                font-size: 1.5rem;
+                white-space: normal;
+            }
+    
+            .image-container img {
+                width: 80%;
+                max-width: 300px;
+            }
+    
+            /* Ajustement du footer */
+            footer {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+    
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nom">LARE <span class="accent">TIBENAME</span></div>
+        <nav>
+            <ul>
+                <li><a href="accueil.html" class="nav-link active">Accueil</a></li>
+                <li><a href="apropos.html" class="nav-link">À propos</a></li>
+                <li><a href="projets.html" class="nav-link">Projets</a></li>
+                <li><a href="experiences.html" class="nav-link">Compétences</a></li>
+                <li><a href="contacts.html" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="text-container">
+                <h1>Je suis <span class="accent">TIBENAME</span>, Développeur en devenir <br>passionné par le web et le design !</h1>
+                <a href="projets.html" class="btn">Voir mes projets</a>
+            </div>
+            <div class="image-container">
+                <img src="image/img_back.jfif" alt="Illustration développeur">
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <p>Designed by <span class="accent">Tibéname</span> with HTML, CSS, JS</p>
+            <p> Tous droits réservés - 2025</p>
+        </div>
+    </footer>
+
+    <script>
+        // Récupère tous les liens de navigation
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                // Supprime la classe "active" de tous les liens
+                navLinks.forEach(l => l.classList.remove('active'));
+                
+                // Ajoute la classe "active" au lien cliqué
+                this.classList.add('active');
+            });
+        });
+
+        // Animation d'apparition des éléments au chargement de la page
+        window.addEventListener('load', function() {
+            const hero = document.querySelector('.hero');
+            const btn = document.querySelector('.btn');
+            const footer = document.querySelector('footer');
+
+            // Ajouter la classe visible pour lancer les animations
+            setTimeout(() => {
+                hero.classList.add('visible');
+                btn.classList.add('visible');
+                footer.classList.add('visible');
+            }, 200); // Légère temporisation pour un effet plus fluide
+        });
+    </script>
+
+</body>
+</html>

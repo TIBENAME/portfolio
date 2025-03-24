@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À propos</title>
+    <style>
+        <style> 
+    /* Réinitialisation des marges et paddings */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        background-color: white;
+        color: black;
+    }
+
+    /* Header */
+    header {
+        background-color: #000;   
+        padding: 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: padding 0.3s ease;
+        opacity: 0;
+        animation: fadeIn 1s forwards;
+    }
+
+    .nom {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: white;
+    }
+
+    .accent {
+        color: #00C4CC;
+        font-weight: bold;
+    }
+
+    nav ul {
+        list-style: none;
+        display: flex;
+        gap: 25px;
+        transition: transform 0.3s ease; /* Animation pour l'alignement des liens */
+    }
+
+    nav ul li {
+        display: inline;
+    }
+
+    nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-size: 1rem;
+        padding: 5px 10px;
+        position: relative;  /* Pour l'animation de l'underline */
+        transition: color 0.3s ease, transform 0.3s ease; /* Animation sur la couleur et la position */
+    }
+
+    /* Animation du texte au survol */
+    nav ul li a:hover {
+        color: #00C4CC;
+        transform: scale(1.1); /* Légère mise en valeur du lien */
+    }
+
+    /* Ajout d'un effet sous-ligné animé */
+    nav ul li a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: #00C4CC;
+        transition: width 0.3s ease;
+    }
+
+    nav ul li a:hover::after {
+        width: 100%; /* L'underline se déploie sur le survol */
+    }
+
+    /* Animation sur l'élément actif du menu */
+    nav ul li a.active {
+        color: blue !important;
+        font-weight: bold;
+        text-decoration: underline;
+    }
+
+    /* Animation au survol des projets */
+    .iframe-box {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        opacity: 0;
+        animation: fadeIn 1s forwards 0.5s; /* Animation d'apparition avec délai */
+    } 
+
+        /* SECTION FORMULAIRE */
+        .card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            width: 50%;
+            margin: 40px auto;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .row {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 15px;
+        }
+
+        .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 10px auto;
+            padding: 10px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px auto;
+        }
+
+        textarea {
+            height: 100px;
+            resize: vertical;
+            margin-bottom: 10px auto;
+            /* padding: 50px; */
+        }
+
+        /* BOUTON */
+        .btn {
+            background-color: #00C4CC;
+            color: white;
+            padding: 12px 20px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+            border: none;
+            width: 100px;
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: #0099A8;
+            transform: scale(1.05);
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: #999292;
+            color: black;
+            padding: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1rem;
+            border-top: 1px solid black;
+            margin-top: 50px;
+        }
+
+        .footer-container {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            .row {
+                flex-direction: column;
+            }
+
+            .card {
+                width: 90%;
+            }
+
+            footer {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body> 
+    <header>
+        <div class="nom">LARE <span class="accent">TIBENAME</span></div>
+        <nav>
+            <ul>
+                <li><a href="accueil.html" class="nav-link active">Accueil</a></li>
+                <li><a href="apropos.html" class="nav-link">À propos</a></li>
+                <li><a href="projets.html" class="nav-link">Projets</a></li>
+                <li><a href="experiences.html" class="nav-link">Compétences</a></li>
+                <li><a href="contacts.html" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="card">
+            <p> Vous avez une idée en tête, n'hésitez pas à me contacter</p>
+            <!-- Première ligne avec deux champs côte à côte -->
+            <div class="row">
+                <div class="container">
+                    <label for="prenom">Votre prénom</label>
+                    <input type="text" id="prenom" name="prenom" placeholder="Saisissez votre prénom">
+                </div>
+                <div class="container">
+                    <label for="nom">Votre nom</label>
+                    <input type="text" id="nom" name="nom" placeholder="Saisissez votre nom">
+                </div>
+            </div>
+
+            <!-- Champs en une seule colonne -->
+            <div class="container">
+                <label for="sujet">Votre sujet</label>
+                <input type="text" id="sujet" name="sujet" placeholder="Saisissez votre sujet">
+            </div>
+
+            <!-- Zone de texte (textarea) pour la description -->
+            <div class="container">
+                <label for="description">Votre description</label>
+                <textarea id="description" name="description" placeholder="Saisissez votre description"></textarea>
+            </div>
+
+            <!-- Bouton de soumission -->
+            <div class="container">
+                <button type="submit" class="btn">Envoyer</button>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-container">
+            <p>Designed by <span class="accent">Tibéname</span> with HTML, CSS, JS</p>
+            <p> Tous droits réservés - 2025</p>
+        </div>
+    </footer>
+</body>
+</html>
